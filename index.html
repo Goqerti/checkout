@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud LLC - Secure Checkout</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.header{
+    background:#2563eb;
+    padding:25px;
+    text-align:center;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+.content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+}
+
+.left{
+    padding:35px;
+    border-right:1px solid #334155;
+}
+
+.right{
+    padding:35px;
+}
+
+.product-card{
+    background:#0f172a;
+    padding:25px;
+    border-radius:15px;
+}
+
+.product-card h2{
+    margin-bottom:10px;
+}
+
+.product-card p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+.price{
+    font-size:42px;
+    color:#22c55e;
+    font-weight:bold;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+select,
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #475569;
+    background:#0f172a;
+    color:white;
+}
+
+select:focus,
+input:focus{
+    outline:none;
+    border-color:#3b82f6;
+}
+
+.payment-section{
+    display:none;
+    margin-top:25px;
+}
+
+.notice{
+    background:#7c2d12;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.bank-box{
+    background:#172554;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.bank-box p{
+    margin:8px 0;
+}
+
+.instructions{
+    background:#111827;
+    padding:15px;
+    border-radius:10px;
+    line-height:1.7;
+}
+
+.instructions ol{
+    margin-left:20px;
+    margin-top:10px;
+}
+
+.upload-box{
+    margin-top:15px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.success{
+    display:none;
+    margin-top:15px;
+    background:#14532d;
+    padding:15px;
+    border-radius:10px;
+}
+
+.error{
+    display:none;
+    margin-top:10px;
+    background:#7f1d1d;
+    padding:12px;
+    border-radius:10px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+@media(max-width:900px){
+    .content{
+        grid-template-columns:1fr;
+    }
+
+    .left{
+        border-right:none;
+        border-bottom:1px solid #334155;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Cloud LLC</h1>
+        <p>Secure Product Checkout</p>
+    </div>
+
+    <div class="content">
+
+        <div class="left">
+
+            <div class="product-card">
+                <h2>Figma Second api</h2>
+
+                <p>
+                    Info: This is a simple API for fetching Figma design data UI/UX Design Software APIs for IT Companies.
+                </p>
+
+                <div class="price">$1120</div>
+            </div>
+
+        </div>
+
+        <div class="right">
+
+            <label>Select Your Country</label>
+
+            <select id="country">
+                <option value="">Choose Country</option>
+                <option value="AZ">🇦🇿 Azerbaijan</option>
+                <option value="TR">🇹🇷 Turkey</option>
+                <option value="US">🇺🇸 United States</option>
+                <option value="UK">🇬🇧 United Kingdom</option>
+                <option value="DE">🇩🇪 Germany</option>
+                <option value="FR">🇫🇷 France</option>
+                <option value="CA">🇨🇦 Canada</option>
+            </select>
+
+            <!-- Azerbaijan -->
+            <div id="azSection" class="payment-section">
+
+                <div class="notice">
+                    ⚠ Due to high commission fees on Azerbaijani bank cards,
+                    payments are currently accepted via card-to-card transfer.
+                    
+
+                    
+                    Transfer fees in Azerbaijan are accepted in Azerbaijani Manat (AZN).
+                </div>
+
+                <div class="bank-box">
+                    <p><strong>🏦 Bank:</strong> Kapital Bank</p>
+                    <p><strong>💳 Card Number:</strong> 4169 7388 1445 2094</p>
+                    <p><strong>👤 Card Holder:</strong> S.A</p>
+                </div>
+
+                <div class="instructions">
+                    <strong>⚠ Instructions:</strong>
+
+                    <ol>
+                        <li>Send the payment to the card above.</li>
+                        <li>Upload a screenshot of the receipt.</li>
+                        <li>Your receipt will be sent for verification.</li>
+                    </ol>
+
+                    <p style="margin-top:10px;color:#22c55e;">
+                        Your balance will be credited after payment confirmation.
+                    </p>
+                </div>
+
+                <div class="upload-box">
+                    <label>Upload Payment Receipt</label>
+                    <input type="file" id="receipt">
+                </div>
+
+                <div class="error" id="azError"></div>
+
+                <button onclick="submitReceipt()">
+                    Submit Receipt
+                </button>
+
+                <div class="success" id="azSuccess">
+                    ✅ Payment Pending Verification<br><br>
+                    Your receipt has been successfully submitted.
+                    Our team will verify your payment shortly.
+                </div>
+
+            </div>
+
+            <!-- International -->
+            <div id="intlSection" class="payment-section">
+
+                <label>Card Number</label>
+                <input type="text" id="cardNumber"
+                placeholder="0000 0000 0000 0000">
+
+                <label>Card Holder Name</label>
+                <input type="text" id="cardHolder"
+                placeholder="John Smith">
+
+                <div class="row">
+
+                    <div>
+                        <label>Expiry Date</label>
+                        <input type="text"
+                        id="expiry"
+                        placeholder="MM/YY">
+                    </div>
+
+                    <div>
+                        <label>CVV</label>
+                        <input type="password"
+                        id="cvv"
+                        placeholder="123">
+                    </div>
+
+                </div>
+
+                <div class="error" id="cardError"></div>
+
+                <button onclick="payNow()">
+                    Pay $49.99
+                </button>
+
+                <div class="success" id="cardSuccess">
+                    ✅ Payment Completed Successfully.<br><br>
+                    Thank you for your purchase.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const countrySelect = document.getElementById("country");
+const azSection = document.getElementById("azSection");
+const intlSection = document.getElementById("intlSection");
+
+countrySelect.addEventListener("change", function(){
+
+    if(this.value === "AZ"){
+        azSection.style.display = "block";
+        intlSection.style.display = "none";
+    }
+    else if(this.value !== ""){
+        azSection.style.display = "none";
+        intlSection.style.display = "block";
+    }
+    else{
+        azSection.style.display = "none";
+        intlSection.style.display = "none";
+    }
+});
+
+function submitReceipt(){
+
+    const receipt =
+    document.getElementById("receipt");
+
+    const error =
+    document.getElementById("azError");
+
+    const success =
+    document.getElementById("azSuccess");
+
+    error.style.display = "none";
+    success.style.display = "none";
+
+    if(receipt.files.length === 0){
+        error.innerHTML =
+        "Please upload your payment receipt.";
+        error.style.display = "block";
+        return;
+    }
+
+    success.style.display = "block";
+}
+
+function payNow(){
+
+    const card =
+    document.getElementById("cardNumber").value;
+
+    const holder =
+    document.getElementById("cardHolder").value;
+
+    const expiry =
+    document.getElementById("expiry").value;
+
+    const cvv =
+    document.getElementById("cvv").value;
+
+    const error =
+    document.getElementById("cardError");
+
+    const success =
+    document.getElementById("cardSuccess");
+
+    error.style.display = "none";
+    success.style.display = "none";
+
+    if(card.length < 16){
+        error.innerHTML =
+        "Invalid card number.";
+        error.style.display = "block";
+        return;
+    }
+
+    if(holder === ""){
+        error.innerHTML =
+        "Please enter card holder name.";
+        error.style.display = "block";
+        return;
+    }
+
+    if(expiry === ""){
+        error.innerHTML =
+        "Please enter expiry date.";
+        error.style.display = "block";
+        return;
+    }
+
+    if(cvv.length < 3){
+        error.innerHTML =
+        "Invalid CVV code.";
+        error.style.display = "block";
+        return;
+    }
+
+    success.style.display = "block";
+}
+</script>
+
+</body>
+</html>
