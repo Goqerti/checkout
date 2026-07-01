@@ -3,431 +3,285 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cloud LLC - Secure Checkout</title>
+<title>Payment Successful</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Inter,Arial,sans-serif;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:#fff;
-    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#0f172a);
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:30px;
-}
-
-.container{
-    width:100%;
-    max-width:1100px;
-    background:#1e293b;
-    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
 
-.header{
-    background:#2563eb;
-    padding:25px;
+.background{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.3;
+    animation:float 8s ease-in-out infinite;
+}
+
+.c1{
+    width:350px;
+    height:350px;
+    background:#16a34a;
+    left:-120px;
+    top:-100px;
+}
+
+.c2{
+    width:300px;
+    height:300px;
+    background:#3b82f6;
+    right:-80px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-40px) scale(1.08);
+    }
+}
+
+.card{
+    position:relative;
+    z-index:2;
+    width:430px;
+    max-width:92%;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:28px;
     text-align:center;
+    padding:45px;
+    color:#fff;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+    animation:show .8s ease;
 }
 
-.header h1{
-    font-size:32px;
+@keyframes show{
+    from{
+        transform:translateY(40px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
 }
 
-.content{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+.icon{
+    width:110px;
+    height:110px;
+    margin:auto;
+    border-radius:50%;
+    background:#16a34a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 0 40px rgba(34,197,94,.45);
+    animation:pulse 2s infinite;
 }
 
-.left{
-    padding:35px;
-    border-right:1px solid #334155;
+@keyframes pulse{
+    50%{
+        transform:scale(1.08);
+        box-shadow:0 0 60px rgba(34,197,94,.65);
+    }
 }
 
-.right{
-    padding:35px;
+.check{
+    width:38px;
+    height:70px;
+    border-right:8px solid #fff;
+    border-bottom:8px solid #fff;
+    transform:rotate(45deg);
+    margin-top:-8px;
 }
 
-.product-card{
-    background:#0f172a;
-    padding:25px;
-    border-radius:15px;
+h1{
+    margin-top:28px;
+    font-size:34px;
+    font-weight:700;
 }
 
-.product-card h2{
-    margin-bottom:10px;
-}
-
-.product-card p{
-    color:#cbd5e1;
-    margin-bottom:20px;
-}
-
-.price{
-    font-size:42px;
-    color:#22c55e;
-    font-weight:bold;
-}
-
-label{
-    display:block;
+p{
     margin-top:15px;
-    margin-bottom:8px;
-    font-weight:600;
-}
-
-select,
-input{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #475569;
-    background:#0f172a;
-    color:white;
-}
-
-select:focus,
-input:focus{
-    outline:none;
-    border-color:#3b82f6;
-}
-
-.payment-section{
-    display:none;
-    margin-top:25px;
-}
-
-.notice{
-    background:#7c2d12;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-    line-height:1.6;
-}
-
-.bank-box{
-    background:#172554;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
-}
-
-.bank-box p{
-    margin:8px 0;
-}
-
-.instructions{
-    background:#111827;
-    padding:15px;
-    border-radius:10px;
+    color:#dbeafe;
     line-height:1.7;
+    font-size:16px;
 }
 
-.instructions ol{
-    margin-left:20px;
-    margin-top:10px;
+.info{
+    margin-top:30px;
+    background:rgba(255,255,255,.07);
+    border-radius:18px;
+    padding:18px;
 }
 
-.upload-box{
-    margin-top:15px;
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+    color:#dbeafe;
+}
+
+.row strong{
+    color:#fff;
 }
 
 button{
     width:100%;
-    padding:14px;
+    margin-top:28px;
     border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    font-weight:600;
+    border-radius:14px;
+    padding:16px;
+    font-size:17px;
     cursor:pointer;
-    margin-top:15px;
+    font-weight:600;
+    background:#22c55e;
+    color:#fff;
+    transition:.25s;
 }
 
 button:hover{
-    background:#1d4ed8;
+    background:#16a34a;
+    transform:translateY(-2px);
 }
 
-.success{
-    display:none;
-    margin-top:15px;
-    background:#14532d;
-    padding:15px;
-    border-radius:10px;
+.footer{
+    margin-top:22px;
+    color:#b6c2d3;
+    font-size:13px;
 }
 
-.error{
-    display:none;
-    margin-top:10px;
-    background:#7f1d1d;
-    padding:12px;
-    border-radius:10px;
+.confetti{
+    position:absolute;
+    width:10px;
+    height:10px;
+    top:-20px;
+    animation:fall linear forwards;
 }
 
-.row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-@media(max-width:900px){
-    .content{
-        grid-template-columns:1fr;
-    }
-
-    .left{
-        border-right:none;
-        border-bottom:1px solid #334155;
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
     }
 }
 </style>
 </head>
+
 <body>
 
-<div class="container">
+<div class="background">
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+</div>
 
-    <div class="header">
-        <h1>Cloud LLC</h1>
-        <p>Secure Product Checkout</p>
-    </div>
+<div class="card">
 
-    <div class="content">
+<div class="icon">
+<div class="check"></div>
+</div>
 
-        <div class="left">
+<h1>Payment Successful</h1>
 
-            <div class="product-card">
-                <h2>Crm system api</h2>
+<p>
+Your payment has been processed successfully.
+Thank you for your purchase. A confirmation email has been sent to your registered email address.
+</p>
 
-                <p>
-                
-                </p>
+<div class="info">
 
-                <div class="price">$1700</div>
-            </div>
+<div class="row">
+<span>Status</span>
+<strong>Completed</strong>
+</div>
 
-        </div>
+<div class="row">
+<span>Reference</span>
+<strong>#PAY-2026-784951</strong>
+</div>
 
-        <div class="right">
+<div class="row">
+<span>Date</span>
+<strong id="date"></strong>
+</div>
 
-            <label>Select Your Country</label>
+</div>
 
-            <select id="country">
-                <option value="">Choose Country</option>
-                <option value="AZ">🇦🇿 Azerbaijan</option>
-                <option value="TR">🇹🇷 Turkey</option>
-                <option value="US">🇺🇸 United States</option>
-                <option value="UK">🇬🇧 United Kingdom</option>
-                <option value="DE">🇩🇪 Germany</option>
-                <option value="FR">🇫🇷 France</option>
-                <option value="CA">🇨🇦 Canada</option>
-            </select>
+<button onclick="window.location.href='/'">
+Continue
+</button>
 
-            <!-- Azerbaijan -->
-            <div id="azSection" class="payment-section">
-
-                <div class="notice">
-                    ⚠ Due to high commission fees on Azerbaijani bank cards,
-                    payments are currently accepted via card-to-card transfer.
-                    
-
-                    
-                    Transfer fees in Azerbaijan are accepted in Azerbaijani Manat (AZN).
-                </div>
-
-                <div class="bank-box">
-                    <p><strong>🏦 Bank:</strong> Kapital Bank</p>
-                    <p><strong>💳 Card Number:</strong> 4169 7388 1445 2094</p>
-                    <p><strong>👤 Card Holder:</strong> S.A</p>
-                </div>
-
-                <div class="instructions">
-                    <strong>⚠ Instructions:</strong>
-
-                    <ol>
-                        <li>Send the payment to the card above.</li>
-                        <li>Upload a screenshot of the receipt.</li>
-                        <li>Your receipt will be sent for verification.</li>
-                    </ol>
-
-                    <p style="margin-top:10px;color:#22c55e;">
-                        Your balance will be credited after payment confirmation.
-                    </p>
-                </div>
-
-                <div class="upload-box">
-                    <label>Upload Payment Receipt</label>
-                    <input type="file" id="receipt">
-                </div>
-
-                <div class="error" id="azError"></div>
-
-                <button onclick="submitReceipt()">
-                    Submit Receipt
-                </button>
-
-                <div class="success" id="azSuccess">
-                    ✅ Payment Pending Verification<br><br>
-                    Your receipt has been successfully submitted.
-                    Our team will verify your payment shortly.
-                </div>
-
-            </div>
-
-            <!-- International -->
-            <div id="intlSection" class="payment-section">
-
-                <label>Card Number</label>
-                <input type="text" id="cardNumber"
-                placeholder="0000 0000 0000 0000">
-
-                <label>Card Holder Name</label>
-                <input type="text" id="cardHolder"
-                placeholder="John Smith">
-
-                <div class="row">
-
-                    <div>
-                        <label>Expiry Date</label>
-                        <input type="text"
-                        id="expiry"
-                        placeholder="MM/YY">
-                    </div>
-
-                    <div>
-                        <label>CVV</label>
-                        <input type="password"
-                        id="cvv"
-                        placeholder="123">
-                    </div>
-
-                </div>
-
-                <div class="error" id="cardError"></div>
-
-                <button onclick="payNow()">
-                    Pay $1700
-                </button>
-
-                <div class="success" id="cardSuccess">
-                    ✅ Payment Completed Successfully.<br><br>
-                    Thank you for your purchase.
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="footer">
+Secure payment powered by SSL Encryption
+</div>
 
 </div>
 
 <script>
-const countrySelect = document.getElementById("country");
-const azSection = document.getElementById("azSection");
-const intlSection = document.getElementById("intlSection");
-
-countrySelect.addEventListener("change", function(){
-
-    if(this.value === "AZ"){
-        azSection.style.display = "block";
-        intlSection.style.display = "none";
-    }
-    else if(this.value !== ""){
-        azSection.style.display = "none";
-        intlSection.style.display = "block";
-    }
-    else{
-        azSection.style.display = "none";
-        intlSection.style.display = "none";
-    }
+document.getElementById("date").innerHTML=
+new Date().toLocaleString("en-US",{
+dateStyle:"medium",
+timeStyle:"short"
 });
 
-function submitReceipt(){
+const colors=[
+"#22c55e",
+"#3b82f6",
+"#facc15",
+"#ef4444",
+"#a855f7",
+"#06b6d4"
+];
 
-    const receipt =
-    document.getElementById("receipt");
+function confetti(){
 
-    const error =
-    document.getElementById("azError");
+for(let i=0;i<180;i++){
 
-    const success =
-    document.getElementById("azSuccess");
+const c=document.createElement("div");
 
-    error.style.display = "none";
-    success.style.display = "none";
+c.className="confetti";
 
-    if(receipt.files.length === 0){
-        error.innerHTML =
-        "Please upload your payment receipt.";
-        error.style.display = "block";
-        return;
-    }
+c.style.left=Math.random()*100+"vw";
 
-    success.style.display = "block";
+c.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+c.style.animationDuration=(Math.random()*3+2)+"s";
+
+c.style.transform="rotate("+Math.random()*360+"deg)";
+
+c.style.opacity=Math.random();
+
+document.body.appendChild(c);
+
+setTimeout(()=>{
+c.remove();
+},6000);
+
 }
 
-function payNow(){
-
-    const card =
-    document.getElementById("cardNumber").value;
-
-    const holder =
-    document.getElementById("cardHolder").value;
-
-    const expiry =
-    document.getElementById("expiry").value;
-
-    const cvv =
-    document.getElementById("cvv").value;
-
-    const error =
-    document.getElementById("cardError");
-
-    const success =
-    document.getElementById("cardSuccess");
-
-    error.style.display = "none";
-    success.style.display = "none";
-
-    if(card.length < 16){
-        error.innerHTML =
-        "Invalid card number.";
-        error.style.display = "block";
-        return;
-    }
-
-    if(holder === ""){
-        error.innerHTML =
-        "Please enter card holder name.";
-        error.style.display = "block";
-        return;
-    }
-
-    if(expiry === ""){
-        error.innerHTML =
-        "Please enter expiry date.";
-        error.style.display = "block";
-        return;
-    }
-
-    if(cvv.length < 3){
-        error.innerHTML =
-        "Invalid CVV code.";
-        error.style.display = "block";
-        return;
-    }
-
-    success.style.display = "block";
 }
+
+window.onload=confetti;
 </script>
 
 </body>
